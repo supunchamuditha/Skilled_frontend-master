@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button, Row, Col, Card, ToggleButton, ButtonGroup } from 'react-bootstrap';
 
+
 const JobList = () => {
   const [selectedLocation, setSelectedLocation] = useState(false);
 
@@ -12,6 +13,8 @@ const JobList = () => {
   });
 
   return (
+    <>
+
     <div className="container mt-4">
       <Row>
         {/* Filters Section */}
@@ -53,7 +56,9 @@ const JobList = () => {
         </Col>
 
         {/* Job Listings Section */}
+
         <Col md={9}>
+          
           <div className="d-flex justify-content-between align-items-center mb-3">
             <p>Showing 12 Results from 21</p>
             <div>
@@ -91,7 +96,9 @@ const JobList = () => {
         </Col>
       </Row>
     </div>
+    </>
   );
+
 };
 
 export default JobList;

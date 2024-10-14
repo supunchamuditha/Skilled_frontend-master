@@ -17,7 +17,9 @@ const Banner = () => {
                     <div className="input-group mt-3" style={{ padding: '10px' }}>
                         <input type="text" className="form-control" placeholder="Search..." />
                         <div className="input-group-append">
-                            <button className="btn btn-primary" type="button">Search</button>
+                            <a href="/jobs">
+                            <button className="btn btn-primary" type="button" >Search</button>
+                            </a>
                         </div>
                     </div>
                     <br />
