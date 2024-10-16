@@ -1,10 +1,10 @@
 // src/components/RegisterForm.jsx
 import React, { useState, useEffect } from 'react';
 import { Form, Button, Container, Row, Col, Alert, Spinner } from 'react-bootstrap';
-import useRegister from '../hooks/useRegister';
+// import useRegister from '../hooks/useRegister';
 
 const RegisterForm = () => {
-    const { register, loading, message, error } = useRegister();
+    // const { register, loading, message, error } = useRegister();
 
     const [formData, setFormData] = useState({
         full_name: '',

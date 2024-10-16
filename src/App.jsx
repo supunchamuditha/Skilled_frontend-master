@@ -14,7 +14,7 @@ import JobDetail from './Components/JobDetail';
 // import Footer from './Components/Footer';
 // import JobList from './Components/JobList';
 // import VerifyAccount from './Components/VerifyAccount';
-// import Login from './Components/Login';
+import Login from './Components/Login';
  import PostJob from './Components/PostJob';
 // import NavbarLogged from './Components/NavbarLogged';
 
@@ -75,6 +75,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/registerRec" element={<RegisterRec />} />
         <Route path="/postjob" element={<PostJob />} />
+
+        <Route path="/login" element={<Login />} />
         
       </Routes>
       <Footer/>
