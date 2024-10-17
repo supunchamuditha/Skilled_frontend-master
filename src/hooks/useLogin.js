@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuthContext } from "../contexts/AuthContext";
 
-const useLogin = () => {
+export const userLogin = () => {
   const [loading, setLoading] = useState(false);
   const { setAuthUser } = useAuthContext();
 
@@ -33,8 +33,38 @@ const useLogin = () => {
   };
   return { loading, login };
 };
+export const recruiterLogin = () => {
+  const [loading, setLoading] = useState(false);
+  const { setAuthUser } = useAuthContext();
 
-export default useLogin;
+  const login = async (email, password) => {
+    const success = handleInputErrors(email, password);
+    if (!success) return;
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/auth/loginCompany", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      localStorage.setItem("authUser", JSON.stringify(data));
+      console.log("Login Successful");
+      setAuthUser(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  return { loading, login };
+};
 
 function handleInputErrors(email, password) {
   if (!email || !password) {

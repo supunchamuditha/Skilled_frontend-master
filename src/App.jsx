@@ -13,7 +13,7 @@ import JobDetail from './Components/JobDetail';
 // import UserProfile from './Components/UserProfile';
 // import Footer from './Components/Footer';
 // import JobList from './Components/JobList';
-// import VerifyAccount from './Components/VerifyAccount';
+ import VerifyAccount from './Components/VerifyAccount';
 import Login from './Components/Login';
  import PostJob from './Components/PostJob';
 // import NavbarLogged from './Components/NavbarLogged';
@@ -58,6 +58,7 @@ import UserProfile from './Components/UserProfile';
 import NavbarLogged from './Components/NavbarLogged';
 import Footer from './Components/Footer';
 import Home  from './Pages/HomePage';
+import RecruiterLogin from './Components/RecruiterLogin';
 
 
 function App() {
@@ -76,7 +77,9 @@ function App() {
         <Route path="/registerRec" element={<RegisterRec />} />
         <Route path="/postjob" element={<PostJob />} />
 
+        <Route path="/loginRec" element={<RecruiterLogin />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/verify" element={<VerifyAccount />} />
         
       </Routes>
       <Footer/>

@@ -1,15 +1,15 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import ReCAPTCHA from "react-google-recaptcha";
-import { userLogin } from "../hooks/useLogin";
+import { recruiterLogin } from "../hooks/useLogin";
 
-const Login = () => {
+const RecruiterLogin = () => {
   const [email, setEmail] = useState(""); // State for email
   const [password, setPassword] = useState(""); // State for password
   const recaptchaRef = useRef(null)
   const [recaptchaToken, setRecaptchaToken] = useState(null); // To store reCAPTCHA token
 
-  const { loading, login } = userLogin(); // Custom hook for login
+  const { loading, login } = recruiterLogin(); // Custom hook for login
 
   // Handle form submission (new add)
   const handleSubmit = async (e) => {
@@ -28,7 +28,7 @@ const Login = () => {
       style={{ height: "100vh" }}
     >
       <div className="w-100" style={{ maxWidth: "600px" }}>
-        <h2 className="text-center mb-4">Job Seeker Log In</h2>
+        <h2 className="text-center mb-4">Recruiter Log In</h2>
 
         {/* Login Form */}
         <Form onSubmit={handleSubmit}> {/* new add: form submission */}
@@ -98,4 +98,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default RecruiterLogin;
