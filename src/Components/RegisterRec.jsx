@@ -58,13 +58,18 @@ const RegisterRec = () => {
             />
           </Form.Group>
 
-          {/* Logo Upload */}
-          <Form.Group controlId="formLogo" className="mb-3">
-            <Form.Label>Logo:</Form.Label>
-            <Button variant="primary" className="w-100 p-2" style={{ backgroundColor: '#144B7D', border: 'none' }}>
-              UPLOAD
-            </Button>
-          </Form.Group>
+              <Form.Group controlId="formProfilePicture" className="mb-3">
+                <Form.Label>Logo:</Form.Label>
+                <Form.Control
+                  type="file"
+                  name="logo"
+                  accept="image/*"
+                  className="p-2"
+                  style={{ backgroundColor: '#E0F2FF', border: 'none' }}
+                />
+              </Form.Group>
+
+        
 
           {/* Password Input */}
           <Form.Group controlId="formPassword" className="mb-3">
@@ -96,7 +101,7 @@ const RegisterRec = () => {
         {/* Sign In Section */}
         <div className="text-center mt-4">
           <p className="text-muted">
-            Already have an Account? <a href="#" className="text-primary">Sign In</a>
+            Already have an Account? <a href="loginRec" className="text-primary">Sign In</a>
           </p>
         </div>
       </div>

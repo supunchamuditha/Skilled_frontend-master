@@ -20,12 +20,9 @@ const JobPortalContent = () => {
                 <p>Company Name</p>
                 <p>Location</p>
 
-                {/* <Link to="/jobAdPage" className="text-primary">
-                  VIEW DETAILS
-                </Link> */}
                 <a href="/jobAdPage" className="text-primary">
                     VIEW DETAILS
-                  </a>
+                </a>
                 <p>2 hours ago</p>
               </div>
             </div>

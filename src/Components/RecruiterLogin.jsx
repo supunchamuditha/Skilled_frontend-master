@@ -1,21 +1,23 @@
 import React, { useRef, useState } from "react";
 import { Form, Button, Container } from "react-bootstrap";
 import ReCAPTCHA from "react-google-recaptcha";
-import { recruiterLogin } from "../hooks/useLogin";
 
 const RecruiterLogin = () => {
   const [email, setEmail] = useState(""); // State for email
   const [password, setPassword] = useState(""); // State for password
-  const recaptchaRef = useRef(null)
-  const [recaptchaToken, setRecaptchaToken] = useState(null); // To store reCAPTCHA token
+  const recaptchaRef = useRef(null);
+  const [recaptchaToken, setRecaptchaToken] = useState(null); // Store reCAPTCHA token
+  const [loading, setLoading] = useState(false); // State for loading
 
-  const { loading, login } = recruiterLogin(); // Custom hook for login
-
-  // Handle form submission (new add)
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Call the login function with email and password (new add)
-    await login(email, password);
+    setLoading(true);
+    // Simulate a login process (replace with your login logic)
+    setTimeout(() => {
+      console.log("Login successful with", { email, password });
+      setLoading(false);
+    }, 2000);
   };
 
   const onRecaptchaChange = (token) => {
@@ -31,7 +33,7 @@ const RecruiterLogin = () => {
         <h2 className="text-center mb-4">Recruiter Log In</h2>
 
         {/* Login Form */}
-        <Form onSubmit={handleSubmit}> {/* new add: form submission */}
+        <Form onSubmit={handleSubmit}>
           {/* Email Input */}
           <Form.Group controlId="formEmail" className="mb-3">
             <Form.Control
@@ -39,8 +41,8 @@ const RecruiterLogin = () => {
               placeholder="Email"
               className="p-3"
               style={{ backgroundColor: "#E0F2FF", border: "none" }}
-              value={email} // new add: link state
-              onChange={(e) => setEmail(e.target.value)} // new add: update state
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} // update state
             />
           </Form.Group>
 
@@ -51,8 +53,8 @@ const RecruiterLogin = () => {
               placeholder="Password"
               className="p-3"
               style={{ backgroundColor: "#E0F2FF", border: "none" }}
-              value={password} // new add: link state
-              onChange={(e) => setPassword(e.target.value)} // new add: update state
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} // update state
             />
           </Form.Group>
 
@@ -66,6 +68,7 @@ const RecruiterLogin = () => {
             </a>
           </div>
 
+          {/* reCAPTCHA */}
           <ReCAPTCHA
             ref={recaptchaRef} // Assign ref to reset the widget
             sitekey="6Le0oUYqAAAAAJNvvKKCKMIdIFC7AQwT1QRKoZyt"
@@ -77,10 +80,10 @@ const RecruiterLogin = () => {
             variant="primary"
             className="w-100 p-3"
             style={{ backgroundColor: "#144B7D", border: "none" }}
-            type="submit" // new add: form submission button
-            disabled={loading} // new add: disable button while loading
+            type="submit"
+            disabled={loading || !recaptchaToken} // Disable button if loading or no reCAPTCHA token
           >
-            {loading ? "Loading..." : "LOG IN"} {/* new add: show loading */}
+            {loading ? "Loading..." : "LOG IN"}
           </Button>
         </Form>
 
@@ -88,7 +91,7 @@ const RecruiterLogin = () => {
         <div className="text-center mt-4">
           <p className="text-muted">
             Don't have an Account?{" "}
-            <a href="#" className="text-primary">
+            <a href="/registerRec" className="text-primary">
               Register Now
             </a>
           </p>
